@@ -1,0 +1,14 @@
+name: Manual lessons trigger
+on:
+  workflow_dispatch:
+    inputs:
+      lessons:
+        default: 0
+   
+jobs:
+  Manual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4    
+      - name: Run DuoXPy
+        run: python main.py
