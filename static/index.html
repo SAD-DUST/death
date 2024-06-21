@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hmm</title>
+  <style>
+    .bottom_but {
+      position: fixed;
+      bottom:160px;
+      right:6px;
+			font-size: 20px;
+			background-color: transparent;
+			color: white;
+			border: none;
+			cursor: pointer;
+			/*margin-top: 30px;
+			margin-right: 10px;*/
+			border-radius: 5px;
+			border-color: aqua; /* Add aqua border color */
+			border-width: 2px; /* Set border width */
+  			box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  			transition: box-shadow 0.3s;
+    }
+		.bottom_but:hover {
+ 			 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+		}
+    body {
+      background-image: url('1.jpg');
+			background-size: fit;
+			color: white;
+			font-family: Arial, sans-serif;
+			font-size: 20px;
+			text-align: right;
+    }
+    #box {
+			border: 2px solid rgb(255, 255, 255);
+			padding: 6px;
+			display: inline-block;
+			margin-top: 30px;
+			border-radius: 5px;
+		}
+  </style>
+</head>
+<body>
+    <h1 style="text-align: right;">Hanoi</h1>
+   <h2><time id="hanoitime"></time></h2>
+   <p ><time id="hanoidate"></time></p>
+   <br>
+   <h1 style="text-align: right;">Tokyo</h1>
+   <h2><time id="tokyotime"></time></h2>
+   <p ><time id="tokyodate"></time></p>
+   <br>
+   <br>
+	 <a href="Music.html" style="color:white; text-align: right;">
+    <p id="box" class="buttom_but">Music</p>
+  </a>
+   <script>
+     function updateTime() {
+       var date = new Date(); 
+       h = date.getHours();
+       m = date.getMinutes();
+       s = date.getSeconds();
+       d = date.getDate();
+       mo = date.getMonth() + 1;
+       y = date.getFullYear();
+       text = "AM";
+       
+			if (h >= 12) {
+				text = "PM";
+			}
+
+			if (h > 12) {
+				h = h - 12;
+			}
+
+			if (h == 0 && text == "AM") {
+				h = 12;
+			}
+
+			if (h == 0 && text == "PM") {
+				h = 12;
+			}
+
+       document.getElementById("hanoitime").textContent =  h+":"+m+":"+s+" "+text;
+       document.getElementById("hanoidate").textContent =  mo+"/"+d+"/"+y;
+
+       var tdate = new Date(Date.parse(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' })));
+       th = tdate.getHours();
+       tm = tdate.getMinutes();
+       ts = tdate.getSeconds();
+       td = tdate.getDate();
+       tmo = tdate.getMonth() + 1;
+       ty = tdate.getFullYear();
+       ttext = "AM";
+       
+			if (th >= 12) {
+				ttext = "PM";
+			}
+
+			if (th > 12) {
+				th = th - 12;
+			}
+
+			if (th == 0 && ttext == "AM") {
+				th = 12;
+			}
+
+			if (th == 0 && ttext == "PM") {
+				th = 12;
+			}
+       document.getElementById("tokyotime").textContent =  th+":"+tm+":"+ts+" "+ttext;
+       document.getElementById("tokyodate").textContent =  tmo+"/"+td+"/"+ty;
+
+     }
+
+     setInterval(updateTime, 1); 
+   </script>
+  </body>
+  </html>

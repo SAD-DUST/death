@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Hmm</title>
+	<style>
+		.bottom_but {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+			font-size: 20px;
+			background-color: transparent;
+			color: white;
+			border: none;
+			cursor: pointer;
+			margin-top: 30px;
+			margin-right: 10px;
+			border-radius: 5px;
+			border-color: aqua; /* Add aqua border color */
+			border-width: 2px; /* Set border width */
+  			box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  			transition: box-shadow 0.3s;
+        }
+		.bottom_but:hover {
+ 			 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+		}
+		body {
+			background-image: url('1.jpg');
+			background-size: fit;
+			color: white;
+			font-family: Arial, sans-serif;
+			font-size: 20px;
+			text-align: right;
+		}
+		#box {
+			border: 2px solid rgb(255, 255, 255);
+			padding: 6px;
+			display: inline-block;
+			margin-top: 30px;
+			border-radius: 5px;
+		}
+		button {
+			padding: 10px;
+			font-size: 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			cursor: pointer;
+			margin-top: 30px;
+			margin-right: 10px;
+			border-radius: 5px;
+			border-color: aqua; /* Add aqua border color */
+			border-width: 2px; /* Set border width */
+		}
+		.but {
+			padding: 10px;
+			font-size: 20px;
+			background-color: transparent;
+			color: white;
+			border: none;
+			cursor: pointer;
+			margin-top: 30px;
+			margin-right: 10px;
+			border-radius: 5px;
+			border-color: aqua; /* Add aqua border color */
+			border-width: 2px; /* Set border width */
+  			box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  			transition: box-shadow 0.3s;
+		}
+
+		.but:hover {
+ 			 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+		}
+	</style>
+	<script>
+		var audio = new Audio('1.mp3');
+		var audio2 = new Audio('2.mp3');
+		var audio3 = new Audio('3.mp3');
+		var isPlaying = false;
+		var currentIndex = 0;
+		audio.volume = 0.5;
+        audio.loop = true;
+		audio2.volume = 0.5;
+        audio2.loop = true;
+		audio3.volume = 0.5;
+        audio3.loop = true;
+
+
+
+
+		function play1() {
+			if(audio.paused) {
+				back1();
+				audio2.pause();
+				audio2.currentTime = 0;
+				audio3.pause(); 
+				audio3.currentTime = 0;
+				audio.play();
+			} 
+      		else {
+				back2();
+				audio.pause();	
+			}
+			isPlaying = !isPlaying;
+			
+		}
+
+		function stop1() {
+				back2();
+			    audio.pause();
+                audio.currentTime = 0;
+				isPlaying = false;
+			}
+
+		function back1() {
+			currentIndex++;
+			var imageUrl = "url('2.jpg')";
+			document.body.style.backgroundImage = imageUrl;
+    	}
+
+
+
+
+		function play2() {
+			if(audio2.paused) {
+				back3(); 
+				audio.pause();
+				audio.currentTime = 0;
+				audio3.pause(); 
+				audio3.currentTime = 0;
+				audio2.play();
+			} 
+      		else {
+				back2();
+				audio2.pause();	
+			}
+			isPlaying = !isPlaying;
+			
+		}
+
+		function stop2() {
+				back2();
+			    audio2.pause();
+                audio2.currentTime = 0;
+				isPlaying = false;
+			}
+
+		function back3() {
+			currentIndex++;
+			var imageUrl = "url('3.jpg')";
+			document.body.style.backgroundImage = imageUrl;
+    	}
+
+
+
+
+		function play3() {
+			if(audio3.paused) {
+				back4(); 
+				audio2.pause();
+				audio2.currentTime = 0;
+				audio.pause(); 
+				audio.currentTime = 0;
+				audio3.play();
+			} 
+      		else {
+				back2();
+				audio3.pause();	
+			}
+			isPlaying = !isPlaying;
+			
+		}
+
+		function stop3() {
+				back2();
+			    audio3.pause();
+                audio3.currentTime = 0;
+				isPlaying = false;
+			}
+
+		function back4() {
+			currentIndex++;
+			var imageUrl = "url('4.jpg')";
+			document.body.style.backgroundImage = imageUrl;
+    	}
+
+
+
+
+      function back2() {
+			currentIndex++;
+			var imageUrl = "url('1.jpg')";
+			document.body.style.backgroundImage = imageUrl;
+	}
+	</script>
+</head>
+<body>
+	<p id="box">Hoa cỏ lau</p>
+	<button class="but" onclick="play1()">Play/Pause</button>
+	<button class="but" onclick="stop1()">Stop</button>
+	<br>
+	<p id="box">Hạ còn vương nắng</p>
+	<button class="but" onclick="play2()">Play/Pause</button>
+	<button class="but" onclick="stop2()">Stop</button>
+	<br>
+	<p id="box">Gió</p>
+	<button class="but" onclick="play3()">Play/Pause</button>
+	<button class="but" onclick="stop3()">Stop</button>
+	<br>
+	<a href="Hell.html" style="color:white">
+        <p id="box" class="buttom_but">Back</p>
+    </a>
+</body>
+</html>
